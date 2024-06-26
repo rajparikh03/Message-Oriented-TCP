@@ -1,0 +1,31 @@
+# Compiler
+CC = gcc
+
+# Compiler flags
+CFLAGS = -Wall -fPIC
+
+# Source files
+SOURCES = msocket.c
+
+# Object files
+OBJECTS = $(SOURCES:.c=.o)
+
+# Library name
+LIBNAME = libmsocket.a
+
+# Default target
+all: $(LIBNAME)
+
+# Rule to create the library
+$(LIBNAME): $(OBJECTS)
+	ar rcs $@ $^
+
+# Rule to compile source files
+%.o: %.c msocket.h
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Clean target
+clean:
+	rm -f $(OBJECTS) $(LIBNAME)
+
+.PHONY: all clean

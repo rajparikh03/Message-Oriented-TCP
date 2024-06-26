@@ -1,0 +1,53 @@
+# Compiler and flags
+CC = gcc
+CFLAGS = -Wall -pedantic
+LDFLAGS = -lpthread
+
+# Library name
+LIB_NAME = libmsocket.a
+
+# Source files
+SOURCES = initmsocket.c
+
+# Source files
+USER1_SRC = user1.c
+USER2_SRC = user2.c
+
+# Object files
+USER1_OBJ = $(USER1_SRC:.c=.o)
+USER2_OBJ = $(USER2_SRC:.c=.o)
+OBJECTS = $(SOURCES:.c=.o)
+
+# Executable names
+USER1_EXEC = user1
+USER2_EXEC = user2
+EXECUTABLE = initmsocket
+
+# Default target
+all:$(EXECUTABLE) $(USER1_EXEC) $(USER2_EXEC)
+
+# Rule to create the executable
+$(EXECUTABLE): $(OBJECTS) $(LIB_NAME)
+	$(CC) $(LDFLAGS) $^ -o $@
+
+# Rule to create user1 executable
+$(USER1_EXEC): $(USER1_OBJ) $(LIB_NAME)
+	$(CC) $(LDFLAGS) $^ -o $@
+
+# Rule to create user2 executable
+$(USER2_EXEC): $(USER2_OBJ) $(LIB_NAME)
+	$(CC) $(LDFLAGS) $^ -o $@
+
+# Rule to compile C source files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# # Rule to create the static library
+$(LIB_NAME):
+	make -C lib
+
+# Clean up target
+clean:
+	rm -f $(USER1_OBJ) $(USER2_OBJ) $(USER1_EXEC) $(USER2_EXEC) 
+
+.PHONY: all clean

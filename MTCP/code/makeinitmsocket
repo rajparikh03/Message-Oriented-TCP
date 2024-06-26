@@ -1,0 +1,37 @@
+# Compiler and flags
+CC = gcc
+CFLAGS = -Wall -pedantic
+LDFLAGS = -lpthread
+
+# Library name
+LIB_NAME = libmsocket.a
+
+# Source files
+SOURCES = initmsocket.c
+
+# Object files
+OBJECTS = $(SOURCES:.c=.o)
+
+# Executable name
+EXECUTABLE = initmsocket
+
+# Default target
+all: $(EXECUTABLE)
+
+# Rule to create the executable
+$(EXECUTABLE): $(OBJECTS) $(LIB_NAME)
+	$(CC) $(LDFLAGS) $^ -o $@
+
+# Rule to compile C source files
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+# Rule to create the static library
+$(LIB_NAME):
+	make -C lib
+
+# Clean up target
+clean:
+	rm -f $(OBJECTS) $(EXECUTABLE) 
+
+.PHONY: all clean
