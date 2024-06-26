@@ -1,8 +1,8 @@
-# MTP (My Transport Protocol) - End-to-End Reliable Data Transfer
+# Psuedo-TCP - End-to-End Reliable Data Transfer
 
 ## Introduction
 
-MTP (My Transport Protocol) is a custom-built protocol designed to ensure reliable end-to-end data transfer over unreliable communication channels. This project involves implementing MTP sockets, ensuring messages are reliably delivered in order, similar to UDP sockets but with additional reliability mechanisms.
+Psudeo-TCP is a custom-built protocol designed to ensure reliable end-to-end data transfer over unreliable communication channels. This project involves implementing MTP(My Transfer Protocol) sockets, ensuring messages are reliably delivered in order, similar to UDP sockets but with additional reliability mechanisms.
 
 This project was developed by Raj Parikh (myself) and Soukhin Nayek as part of the Computer Networks Laboratory course.
 ## Features
