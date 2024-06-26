@@ -46,9 +46,5 @@ Contributions are welcome! If you'd like to contribute to the development of MTP
 
 This project was inspired by the need for reliable data transfer over unreliable communication channels. Special thanks to the contributors who have helped improve and maintain MTP.
 
-## Contact
-
-For any inquiries or support, please contact [Sukhomay Patra](mailto:sukhomay@kgpian.iitkgp.ac.in).
-
 ---
 **Note**: Detailed instructions for implementation and testing are provided in the project documentation.
